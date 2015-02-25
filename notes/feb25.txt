@@ -1,0 +1,6 @@
+mergeSort(Deck) {
+	if size(Deck) <=  1
+	   return Deck;
+	else {
+	A = half the deck
+	B = half the deck
