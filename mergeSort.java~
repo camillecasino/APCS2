@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+import java.util.ArrayList;
+
+public class mergeSort {
+
+    ArrayList<Integer> A;
+    ArrayList<Integer> B;
+
+    public mergeSort() {
+	ArrayList<Integer> A = new ArrayList<Integer>();
+	A.add(1);
+	A.add(4);
+	A.add(9);
+	ArrayList<Integer> B = new ArrayList<Integer>();
+	B.add(2);
+	B.add(3);
+	B.add(12);
+    }
+
+    public 
