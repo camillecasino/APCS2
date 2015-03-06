@@ -1,0 +1,6 @@
+the merge sort has log(base2)(n)
+however, we always keep copying the elements whenver we split them
+The array = n
+The sum of each level's merge is also n
+Big O notation - a function f(n) is said to be O(g(n)) or "Big O g of n" if there exists some constant such that k*g(n) > f(n)
+over the long term

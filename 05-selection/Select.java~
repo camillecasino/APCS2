@@ -1,0 +1,20 @@
+import java.io.*;
+import java.util.*;
+
+public class Select {
+
+    private int pivot;
+    private ArrayList<Integer> aL;
+
+    public void partition() {
+	for (int i = 0; i < this.length; i++) {
+	    if (this.get(i) < pivot) {
+		this.add(0, this.get(i));
+	    } else {
+		this.add(this.get(i));
+	    }
+	}
+    }
+
+
+}
