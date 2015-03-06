@@ -1,13 +1,17 @@
 import java.io.*;
 import java.util.*;
-import java.util.ArrayList;
+import java.util.Array;
 
 public class Select {
 
-    private int pivot;
-    private ArrayList<Integer> aL;
+    private int pivot = 9;
+    private int[] array = {1, 5, 6, 27, 3, 9, 32};
     
-    public void partition() {
+    public Select(int[] a, int k, int L, int H) {
+	
+	int Hi = 
+	
+	/*
 	for (int i = 0; i < this.length; i++) {
 	    if (this.get(i) < 6) {
 		this.add(0, this.get(i));
@@ -15,17 +19,10 @@ public class Select {
 		this.add(this.get(i));
 	    }
 	}
+	*/
     }
 
     public static void main(String[] args) {
-	ArrayList<Integer> aL = new ArrayList<Integer>();
-	aL.add(1);
-	aL.add(13);
-	aL.add(25);
-	aL.add(4);
-	aL.add(6);
-	aL.add(17);
-	aL.add(2);
 	aL.partition();
 	System.out.println(aL);
     }

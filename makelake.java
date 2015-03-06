@@ -12,30 +12,12 @@ public class makelake {
     int xcoor2 = 1;
     int ycoor2 = 1;
     int depth2 = 10;
-    int[][] lake;
-    
-    public makelake() {
-	/*
-	Scanner sc = new Scanner(new File("makelake.dat"));
-	int j = 0;
-	while (sc.hasNext()) {
-	    String line = sc.nextLine();
-	    if (line = 0) {
-		R = intAt(line, 0);
-		C = intAt(line
-	    } else if (line
-	}	
-	*/
-	int[] L1 = {28, 25, 20, 32, 34, 36};
-	int[] L2 = {27, 25, 20, 20, 30, 34};
-	int[] L3 = {24, 20, 20, 20, 20, 30};
-	int[] L4 = {20, 20, 14, 14, 20, 20};
-	
-	lake[0] = L1;
-	lake[1] = L2;
-	lake[2] = L3;
-	lake[3] = L4;
-    }
+    int[][] lake = {
+	{28, 25, 20, 32, 34, 36},
+	{27, 25, 20, 20, 30, 34},
+	{24, 20, 20, 20, 20, 30},
+	{20, 20, 14, 14, 20, 20},  
+    };
 
 
     /*
@@ -46,7 +28,7 @@ public class makelake {
     */
 
     public void stomp() {
-	int[] inst1 = {};
+	int[] inst1 = new int[9];
 	int count = 0;
 	for (int i = xcoor; i < xcoor + 2; i++) {
 	    for (int j = ycoor; j < ycoor + 2; j++) {
