@@ -1,0 +1,9 @@
+public class LList {
+
+    private Node l;
+
+    public void add(String s) {
+	l.setNext(new Node(s));
+    }
+   
+}

@@ -10,8 +10,12 @@ public class LList {
 
     public void add(String s){
 	Node tmp = new Node(s);
-	tmp.setNext(l);
-	l = tmp;
+	if (l.getNext() == null) {
+	    l.setNext(tmp);
+	} else {
+	    tmp.setNext(l.getNext());
+	    l.getNext().setNext(tmp);
+	}
     }
 
     public String toString(){
@@ -24,16 +28,16 @@ public class LList {
 	return s;
     }
 
-    public void insert(int n, String s) {
+    public void insert(int i, String s) {
 	Node n = new Node(s);
 	/*if (n == 0) {
 	    n.setNext(l);
 	    l = n;
 	} else {
 	*/
-	    Node preN = find(n - 1);
+	    Node preN = find(i - 1);
 	    n.setNext(preN.getNext());
-	    preN.setNext(newNode);
+	    preN.setNext(n);
 	
     }
 
@@ -45,6 +49,18 @@ public class LList {
 	    a = a + 1;
 	}
 	return f;
+    }
+
+    public static void main(String[] args) {
+	LList LL = new LList();
+	System.out.println(LL);
+	System.out.println();
+	LL.add("hi");
+	LL.add("1");
+	LL.add("13");
+	LL.add("888");
+	System.out.println(LL);
+	
     }
 		
 }

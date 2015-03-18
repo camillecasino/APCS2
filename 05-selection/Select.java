@@ -9,17 +9,10 @@ public class Select {
     
     public Select(int[] a, int k, int L, int H) {
 	
-	int Hi = 
+	int Hi = a.length();
+	int Li = 0;
 	
-	/*
-	for (int i = 0; i < this.length; i++) {
-	    if (this.get(i) < 6) {
-		this.add(0, this.get(i));
-	    } else {
-		this.add(this.get(i));
-	    }
-	}
-	*/
+	
     }
 
     public static void main(String[] args) {

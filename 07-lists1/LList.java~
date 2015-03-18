@@ -1,12 +1,5 @@
 public class LList {
-    
-    private Node l;
-    private int len;
-
-    public LList() {
-	l = new Node();
-	len = 0;
-    }
+    private Node l=null;
 
     public void add(String s){
 	Node tmp = new Node(s);
@@ -26,25 +19,15 @@ public class LList {
 
     public void insert(int n, String s) {
 	Node n = new Node(s);
-	/*if (n == 0) {
+	if (n == 0) {
 	    n.setNext(l);
 	    l = n;
 	} else {
-	*/
 	    Node preN = find(n - 1);
 	    n.setNext(preN.getNext());
 	    preN.setNext(newNode);
-	
+	}
     }
 
-    public Node find(int i) {
-	Node f = l;
-	int a = 0;
-	while (a < i) {
-	    f = f.getNext();
-	    a = a + 1;
-	}
-	return f;
-    }
 		
 }
