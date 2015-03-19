@@ -12,6 +12,7 @@ public class LList {
 
     // adds at the beginning of the "list," which is technically
     // after the first dummy node
+    /*
     public void add(String s) {
 	Node tmp = new Node(s);
 	// checks if the list only has one element in it,
@@ -32,6 +33,17 @@ public class LList {
 	// adds to length since we are adding to the list
 	len = len + 1;
     }
+    */
+
+    public void addInt(int n) {
+	Node tmp = new Node(n);
+	if (l.getNext() == null) {
+	    l.setNext(tmp);
+	} else {
+	    tmp.setNext(l.getNext());
+	    l.setNext(tmp);
+	}
+    }
 
     // toString method
     public String toString(){
@@ -43,7 +55,7 @@ public class LList {
 	s = s + "null";
 	return s;
     }
-
+    /*
     public void add(int i, String s) {
 	Node tmp = new Node(s);
 	// checks if we wanna add this node at the
@@ -90,8 +102,56 @@ public class LList {
 	}
 	len = len + 1;
     }
+
+    public void addInt(int i, int n) {
+	Node tmp = new Node(n);
+	// checks if we wanna add this node at the
+	// 0th index, which is actually just the beginning
+        if (i == 0) {
+	    // therefore there's nothing wrong with using
+	    // the add method with one param that we
+	    // wrote before, since it automatically
+	    // places the node in the beginning (aka,
+	    // after the dummy node)
+	    add(n);
+	} else {
+	    // now we find out what the node was
+	    // that's in the spot BEFORE the spot
+	    // that we want.
+	    // ex: in a list
+	    // null > 4 > 3 > 2 > 1 > 0 > null
+	    // if we want our node to go into
+	    // index 2 then we look at index 1,
+	    // which in this case is 3.
+	    // we use that information in the
+	    // next (if you'll pardon the pun)
+	    // step.
+	    Node preN = get(i - 1);
+
+	    // now that we know the node that was
+	    // in the spot before our desired
+	    // spot, we find out what comes after it,
+	    // and set that to be our next.
+	    // continuing with the previous example,
+	    // we find out that 2 comes after 3,
+	    // so we set 1 to be our node's next.
+	    // now the second half of the list looks
+	    // like this:
+	    // "hey" > 2 > 1 > 0 > null
+	    tmp.setNext(preN.getNext());
+
+	    // after this, we can set the next of the
+	    // node in index i - 1 to our node, to 
+	    // re-link the whole thing together.
+	    // the final list:
+	    // null > 4 > 3 > hey > 2 > 1 > 0 > null
+	    preN.setNext(tmp);
+	}
+	len = len + 1;
+    }
+    */
     
-    public void remove (int i) {
+    public void remove(int i) {
 	// preN is the node before the one
 	// we want to remove
 	Node preN = get(i - 1);
@@ -111,6 +171,25 @@ public class LList {
 	len = len - 1;
     }
 	
+    public int removeIntRet(int i) {
+	Node T = l;
+	if (i >= len || i < 0) {
+	    //throw exception
+	} else {
+	    for (int j = 0; j < i - 1; j++) {
+		T = T.getNext();
+	    }
+	}
+	int s = T.getNext().getData();
+	T.setNext(T.getNext().getNext());
+	return s;
+    }
+
+    public int getInt(int i) {
+	return get(i).getData();
+    }
+
+    
 
     public Node get(int i) {
 	Node f = l;
@@ -135,6 +214,7 @@ public class LList {
 
 
     public static void main(String[] args) {
+	/*
 	LList LL = new LList();
 	System.out.println(LL);
 	System.out.println(LL.getLength());
@@ -156,6 +236,7 @@ public class LList {
 	LL.remove(2);
 	System.out.println(LL);
 	System.out.println(LL.getLength());
+	*/
 	
     }
 		
