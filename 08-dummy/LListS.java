@@ -1,32 +1,38 @@
-public class LList {
-    // just in case I need to present my code tomorrow,
-    // at least I'll have reference for myself if I
-    // forget how exactly to explain anything! :)
-    private Node l;
-    private int len;
+public class LListS {
 
-    public LList() {
+    // previously coded LList methods with string params
+
+    public LListS() {
 	l = new Node();
 	len = 0;
     }
 
-    public LLit getLLit() {
-	LLit llit = new LLit(l);
-	return llit;
-    }
+    // adds at the beginning of the "list," which is technically
+    // after the first dummy node (declared in the constructor)
 
-    public void addInt(int n) {
-	Node tmp = new Node(n);
+    
+    public void add(String s) {
+	Node tmp = new Node(s);
+	// checks if the list only has one element in it,
+	// in which case we can just add tmp after the
+	// dummy node without issue
 	if (l.getNext() == null) {
 	    l.setNext(tmp);
 	} else {
+	    // otherwise, we need to make sure that the rest
+	    // of the list doesn't get lost.
+	    // after we set tmp's next node to the dummy node's
+	    // next node (which is the first real node in the
+	    // list), we have to push the dummy node back to the
+	    // front by setting its next as tmp.
 	    tmp.setNext(l.getNext());
 	    l.setNext(tmp);
 	}
+	// adds to length since we are adding to the list
+	len = len + 1;
     }
 
-    // toString method
-    public String toString(){
+    public String toString() {
 	String s = "";
 	Node tmp;
 	for (tmp = l; tmp != null; tmp=tmp.getNext()){
@@ -40,9 +46,10 @@ public class LList {
 	return T.getNext();
     }
 
+    // adds to a specified index
 
-    public void addInt(int i, int n) {
-	Node tmp = new Node(n);
+    public void add(int i, String s) {
+	Node tmp = new Node(s);
 	// checks if we wanna add this node at the
 	// 0th index, which is actually just the beginning
 	if (i == 0) {
@@ -51,7 +58,7 @@ public class LList {
 	    // wrote before, since it automatically
 	    // places the node in the beginning (aka,
 	    // after the dummy node)
-	    add(n);
+	    add(s);
 	} else {
 	    // now we find out what the node was
 	    // that's in the spot BEFORE the spot
@@ -65,7 +72,7 @@ public class LList {
 	    // next (if you'll pardon the pun)
 	    // step.
 	    Node preN = get(i - 1);
-	    
+
 	    // now that we know the node that was
 	    // in the spot before our desired
 	    // spot, we find out what comes after it,
@@ -77,7 +84,7 @@ public class LList {
 	    // like this:
 	    // "hey" > 2 > 1 > 0 > null
 	    tmp.setNext(preN.getNext());
-	    
+
 	    // after this, we can set the next of the
 	    // node in index i - 1 to our node, to 
 	    // re-link the whole thing together.
@@ -87,103 +94,9 @@ public class LList {
 	}
 	len = len + 1;
     }
-    
-    
-    public void remove(int i) {
-	// preN is the node before the one
-	// we want to remove
-	Node preN = get(i - 1);
-
-	// postN is the node after the one
-	// we want to remove
-	Node postN = get(i + 1);
-
-	// in order to make it so that
-	// it's like the node doesn't
-	// exist, we need to remove
-	// the links that connect it
-	// to the list and link
-	// those two together.
-	preN.setNext(postN);
-	// now it's like the node was never there O_o
-	len = len - 1;
-    }
-	
-    public int removeIntRet(int i) {
-	Node T = l;
-	if (i >= len || i < 0) {
-	    //throw exception
-	} else {
-	    for (int j = 0; j < i - 1; j++) {
-		T = T.getNext();
-	    }
-	}
-	int s = T.getNext().getData();
-	T.setNext(T.getNext().getNext());
-	return s;
-    }
-
-    public boolean removeBooRet(int n) {
-	Node T = l;
-	while (T.getNext() != null) {
-	    if (T.getNext().getData() == n) {
-		T.setNext(T.getNext().getNext());
-		return true;
-	    }
-	}
-	return false;
-    }
-
-    public boolean removeBooRetZ(int n) {
-	Node T = l.getNext();
-	Node T2 = l;
-	while (T != null) {
-	    if (T.getData() == n) {
-		T2.setNext(T.getNext());
-		return true;
-	    }
-	    T2 = T;
-	    T = T.getNext();
-	}
-	return false;
-    }
-
-    public int getInt(int i) {
-	return get(i).getData();
-    }
-
-    
-
-    public Node get(int i) {
-	Node f = l;
-	int a = 0;
-	// this was the same as the find routine
-	// except since we have a dummy node in
-	// the beginning, we need to add 1 to i
-	// so that the list can have a simulated
-	// beginning at the node after the first
-	// dummy one.
-	while (a < i + 1) {
-	    f = f.getNext();
-	    a = a + 1;
-	}
-	return f;
-    }
-
-    public int getLength() {
-	return len;
-    }
-    //just to check if the len parts of each method work
-
 
     public static void main(String[] args) {
-
-	Node T = l.getStart();
-	while (l != null) {
-	    System.out.println(L.getData());
-	    l = l.getNext();
-	}
-	/*
+	
 	  LList LL = new LList();
 	  System.out.println(LL);
 	  System.out.println(LL.getLength());
@@ -205,8 +118,8 @@ public class LList {
 	  LL.remove(2);
 	  System.out.println(LL);
 	  System.out.println(LL.getLength());
-	*/
-	
     }
-}		
 
+
+
+}

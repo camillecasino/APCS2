@@ -1,0 +1,35 @@
+public class LListS {
+
+    // previously coded LList methods with string params
+
+    public LListS() {
+	l = new Node();
+	len = 0;
+    }
+
+    // adds at the beginning of the "list," which is technically
+    // after the first dummy node (declared in the constructor)
+
+    
+    public void add(String s) {
+	Node tmp = new Node(s);
+	// checks if the list only has one element in it,
+	// in which case we can just add tmp after the
+	// dummy node without issue
+	if (l.getNext() == null) {
+	    l.setNext(tmp);
+	} else {
+	    // otherwise, we need to make sure that the rest
+	    // of the list doesn't get lost.
+	    // after we set tmp's next node to the dummy node's
+	    // next node (which is the first real node in the
+	    // list), we have to push the dummy node back to the
+	    // front by setting its next as tmp.
+	    tmp.setNext(l.getNext());
+	    l.setNext(tmp);
+	}
+	// adds to length since we are adding to the list
+	len = len + 1;
+    }
+
+}
