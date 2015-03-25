@@ -10,10 +10,10 @@ public class LList {
 	len = 0;
     }
 
-    public LLit getLLit() {
-	LLit llit = new LLit(l);
-	return llit;
-    }
+    //public LLit getLLit() {
+    //	LLit llit = new LLit(l);
+    //	return llit;
+    //}
 
     public void addInt(int n) {
 	Node tmp = new Node(n);
@@ -179,9 +179,9 @@ public class LList {
     public static void main(String[] args) {
 
 	Node T = l.getStart();
-	while (l != null) {
-	    System.out.println(L.getData());
-	    l = l.getNext();
+	while (T != null) {
+	    System.out.println(T.getData());
+	    T = T.getNext();
 	}
 	/*
 	  LList LL = new LList();
