@@ -3,17 +3,22 @@ public class Queue<E>{
 	Node<E> tail;
 	int size;	
 	public Queue(){
-		head = null;
-		tail = null;
+		head = new Node<E>(null);
+		tail = new Node<E>(null);
 		size = 0;
 	}
 	public void enqueue(E data){
 		Node<E> newNode = new Node<E>(data);
 		Node<E> tmp;
 		tmp = head;
-		while(tmp.getNext()!=tail){
-			tmp = tmp.getNext();
-			
+		if(size==0){
+			head.setNext(newNode);
+		}
+		else{
+				
+			while(tmp.getNext()!=tail){
+				tmp = tmp.getNext();
+			}		
 		}
 		tmp.setNext(newNode);
 		size++;
@@ -26,7 +31,7 @@ public class Queue<E>{
 		
 	}
 	public boolean empty(){
-		return(head.getNext()==tail);
+		return(size==0);
 	}
 	public Node<E> front() {
 		Node<E> a = head.getNext();
