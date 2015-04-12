@@ -1,21 +1,18 @@
-public class Queue<E>{
-    Node<E> head;
-    Node<E> tail;
+public class Queue{
+    Node head;
+    Node tail;
     int size;	
     public Queue(){
-	head = new Node<E>(null);
-	tail = new Node<E>(null);
+	head = new Node();
+	tail = new Node();
 	size = 0;
     }
-    public void enqueue(E data){
-	Node<E> newNode = new Node<E>(data);
-	Node<E> tmp;
-	tmp = head;
+    public void enqueue(Node n) {
+	Node newNode = n;
+	Node tmp = head;
 	if(size==0){
 	    head.setNext(newNode);
-	}
-	else{
-				
+	} else {		
 	    while(tmp.getNext()!=tail){
 		tmp = tmp.getNext();
 	    }		
@@ -23,8 +20,24 @@ public class Queue<E>{
 	tmp.setNext(newNode);
 	size++;
     }
-    public Node<E> dequeue() {
-	Node<E> a = head.getNext();
+    
+    public void enqueue(char ch, int x, int y) {
+	Node newNode = new Node(ch, x, y);
+	if (size == 0) {
+	    head.setNext(newNode);
+	} else {
+	    Node tmp = head;
+	    tmp.setNext(newNode);
+	    while (tmp.getNext()!=tail) {
+		tmp = tmp.getNext();
+	    }
+	}
+	tmp.setNext(newNode);
+	size++;	    
+    }
+
+    public Node dequeue() {
+	Node a = head.getNext();
 	head.setNext(a.getNext());
 	size--;		
 	return a;
@@ -33,11 +46,23 @@ public class Queue<E>{
     public boolean empty(){
 	return(size==0);
     }
-    public Node<E> front() {
-	Node<E> a = head.getNext();
+    public Node front() {
+	Node a = head.getNext();
 	return a;
     }
     public int size(){
 	return size;
     }
+
+    public String toString() {
+	String s = "head <-- ";
+	Node tmp = head.getNext();
+	while (tmp != null) {
+	    s = s + tmp.getData() + "<-- ";
+	    tmp = tmp.getNext();
+	}
+	return s + "tail";
+    }
+
+
 }
