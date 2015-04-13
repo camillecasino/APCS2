@@ -1,0 +1,10 @@
+First in first out (FIFO)
+Queue q = new Queue();
+q.enqueue(x)
+add x to the back or tail of the queue
+q.dequeue()
+remove and return the item at the head of the queue
+
+q.empty()
+q.front() or q.head()
+returns but doesn't remove the front/head value

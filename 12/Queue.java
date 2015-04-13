@@ -13,26 +13,21 @@ public class Queue{
 	if(size==0){
 	    head.setNext(newNode);
 	} else {		
-	    while(tmp.getNext()!=tail){
-		tmp = tmp.getNext();
-	    }		
+	    tail.setNext(newNode);
+	    tail = newNode;
 	}
-	tmp.setNext(newNode);
 	size++;
     }
     
     public void enqueue(char ch, int x, int y) {
 	Node newNode = new Node(ch, x, y);
+	Node tmp = head;
 	if (size == 0) {
 	    head.setNext(newNode);
 	} else {
-	    Node tmp = head;
-	    tmp.setNext(newNode);
-	    while (tmp.getNext()!=tail) {
-		tmp = tmp.getNext();
-	    }
+	    tail.setNext(newNode);
+	    tail = newNode;
 	}
-	tmp.setNext(newNode);
 	size++;	    
     }
 

@@ -1,0 +1,18 @@
+Stack
+- take from the top
+- place on the top
+- last in, first out (LIFO) data structure
+- push(n): pushes it onto the top of the stack
+- pop(): remove the item from the top of the stack and return it
+- empty()/isEmpty(): returns boolean of whether the stack is empty
+- peek(): returns but doesn't remove the top element on the stack
+- size: returns size of the stack (doesn't always come)
+- other "cheat" methods
+- myStack class
+  - will store a stack
+  - push, pop, empty, and peek
+    - 
+  - use the generic or int or String
+  - linkedlist internally
+  - where to insert/remove
+    - last one (element at the end)
