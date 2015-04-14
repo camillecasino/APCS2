@@ -1,0 +1,9 @@
+best first search
+   when you add each node to the frontier, first assign a priority and then add    to the frontier which is a priority queue (ordered list)
+Maze heuristics:
+1. distance formula (Euclidean)
+2. Manhattan (taxi cab) distance
+   vertical and horizontal components
+
+A* search
+priority of Node n = cost to get to node N + estimated distance to goal
