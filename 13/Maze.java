@@ -1,8 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Maze 
-{
+public class Maze {
     private char[][] board;
     private int maxX;
     private int maxY;
@@ -13,6 +12,8 @@ public class Maze
     private char exit='$';
     private char visited = '.';
     private boolean solved = false;
+
+    private Frontier f;
 		
     public void delay(int n){
 	try {
@@ -86,68 +87,64 @@ public class Maze
 	    board[x][y]=visited;
 	}
     }
-		
-    public void bfs(int x, int y) {
-	Frontier f = new Frontier();
-	f.add(new Node(x, y));
 
-	board[x][y] = 'x';
+    /*
+      Only adds if the tx,ty spot is available path or exit
+    */
+    public void addToFront(int tx, int ty, Node current){
+	Node tmp = null;
+	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
+	    tmp = new Node(tx,ty);
+	    tmp.setPrev(current);
+	    f.add(tmp);
+	}
+						
+    }
+
+    public int distance(int xcoor, int ycoor) {
+	return (((xcoor - 18) * (xcoor - 18)) + ((ycoor - 27) * (ycoor - 27)));
+    }
+
+    public void bfs(int x, int y){
+	//f = new Frontier();
+	f = new StackFront();
+
+	f.add(new Node(x,y));
+
+	int tx=0,ty=0;
 	Node current = null;
-	int tx = 0, ty = 0;
-
-	while (!f.isEmpty()) {
+	while (!f.isEmpty()){
 	    current = f.remove();
 	    int cx = current.getX();
 	    int cy = current.getY();
-	    board[cx][cy] = 'z';
-	    Node tmp;
 
-	    if (board[cx][cy] == '$') {
+	    if (board[cx][cy]=='$')
 		break;
-	    }
+						
+	    board[cx][cy]='z';
 
-	    tx = cx + 1;
-	    ty = cy;
-	    if (board[tx][ty] == '#' || board[tx][ty] == '$') {
-		tmp = new Node(tx, ty);
-		tmp.setPrev(current);
-		f.add(tmp);
-	    }
-	   
-	    tx = cx - 1;
-	    ty = cy;
-	    if (board[tx][ty] == '#' || board[tx][ty] == '$') {
-		tmp = new Node(tx, ty);
-		tmp.setPrev(current);
-		f.add(tmp);
-	    }
- 
-	    tx = cx;
-	    ty = cy - 1;
-	    if (board[tx][ty] == '#' || board[tx][ty] == '$') {
-		tmp = new Node(tx, ty);
-		tmp.setPrev(current);
-		f.add(tmp);
-	    }
-
-	    tx = cx;
-	    ty = cy + 1;
-	    if (board[tx][ty] == '#' || board[tx][ty] == '$') {
-		tmp = new Node(tx, ty);
-		tmp.setPrev(current);
-		f.add(tmp);
-	    }
+	    addToFront(cx+1,cy,current);
+	    addToFront(cx-1,cy,current);
+	    addToFront(cx,cy+1,current);
+	    addToFront(cx,cy-1,current);
 
 	    delay(50);
 	    System.out.println(this);
 	}
-    }
 
+	// path recovery
+	for (Node p = current.getPrev(); p != null ; p = p.getPrev()){
+	    board[p.getX()][p.getY()] = 'P';
+	    delay(100);
+	    System.out.println(this);
+	}
+    }
+		
     public static void main(String[] args){
 	Maze m = new Maze();
 	System.out.println(m);
 	m.bfs(1,1);
 	System.out.println(m);
+		
     }
 }
-
