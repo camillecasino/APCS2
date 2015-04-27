@@ -1,0 +1,4 @@
+public class Node {
+private int delay;
+private Node left, right;
+//get and set and constructing

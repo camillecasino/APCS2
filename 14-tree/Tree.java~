@@ -31,15 +31,6 @@ public class Tree {
 	}
     }
 
-    public String search(int i) {
-	Node n = search(T, i);
-	if (n == null) {
-	    return "NOT FOUND";
-	} else {
-	    return n.toString();
-	}
-    }
-
     public Node search(Node t, int i) {
 	Node T = t;
 	Node T2;
@@ -62,6 +53,11 @@ public class Tree {
 	    }
 	}
 	return null;
+	// if (i = T2.getData()) {
+	//     T2.setLeft(i);
+	// } else {
+	//     T2.setRight(i);
+	// }
     }
 
     public void rinsert(Node t, int i) {
@@ -96,9 +92,9 @@ public class Tree {
 	if (i == T.getData()) {
 	    return T;
 	} else if (i < T.getData()) {
-	    return rsearch(T.getLeft(), i);
+	    rsearch(T.getLeft(), i);
 	} else {
-	    return rsearch(T.getRight(), i);
+	    rsearch(T.getRight(), i);
 	}
 	return null;
     }

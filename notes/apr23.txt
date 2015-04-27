@@ -1,0 +1,26 @@
+public class Node {
+private int delay;
+private Node left, right;
+//get and set and constructing
+binary search tree
+- more restrictions on data
+- given any node v, all the nodes in the left subtree have values < v and all nodes in the right subtree have values > v.
+Node search(Node T, int i) {
+     while (T != null) {
+     	   int c = T.getData().compareTo(i);
+	   if (c > 0) {
+	      	 T = T.getRight();
+	   } else if (c < 0) {
+	     	 T = T.getLeft();
+	   }
+     }
+}
+
+insert
+if T == null {
+   point T to the node you're inserting
+insert as a new leaf:
+- create new node n
+- search for the value of n
+- when lead pointer (T) gets to null, piggyback (T2) will be set to the node before insertion pt
+- insert new node to left or right of T2 as appropriate

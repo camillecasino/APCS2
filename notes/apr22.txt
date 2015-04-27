@@ -1,0 +1,21 @@
+Trees
+Graph - collection of nodes and edges (verticies)
+node - holds stuff
+edge - connects nodes
+connected things are "components"
+weighted - cost assosciated with the edges
+directed - edges have direction (you may only go from a to b, a to c, but not c to a, etc)
+tree - acyclic graph w/ one node designated as the root
+     - either empty or has one or more nodes
+     - each node can have 0 or more *children*
+     - one node is designated as the *root*
+     - drawn either from top down or from side to side
+     - leaf = node w/o children
+     - siblings = children w/ the same parent
+     - path = sequence of nodes and edges to get from somewhere to somewhere
+     - ancestor = any node on the path from n to the root
+     - descendents = children, their children, etc
+     - height = longest root to leaf path
+     - a tree is full if every node has either 0 or the maximum number of
+       allowable children
+binary tree - each node is a leaf or has one or two children
