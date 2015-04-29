@@ -89,8 +89,23 @@ public class Tree {
 	}
     }
 	
-	
-	    
+    public String traverse(Node T) {
+	String s = "";
+	s = s + T.getData() + traverse(T.getLeft()) + traverse(T.getRight());
+	return s;
+    }
+
+    public String toString() {
+	Node tmp = T;
+	String s = "";
+	if (tmp == null) {
+	    return s;
+	} else {
+	    s = s + traverse(tmp);
+		//+ traverse(tmp.getLeft()) + traverse(tmp.getRight());
+	} return s;
+    }
+
     public Node rsearch(Node t, int i) {
 	Node T = t;
 	if (i == T.getData()) {
@@ -99,7 +114,54 @@ public class Tree {
 	    return rsearch(T.getLeft(), i);
 	} else {
 	    return rsearch(T.getRight(), i);
-	}
-	return null;
+	} 
     }
+
+    public void remove(Node t, int i) {
+	Node T = t;
+	Node T2, L;
+	if (i < T.getData()) {
+	    T2 = T;
+	    T = T.getLeft();
+	} else {
+	    T2 = T;
+	    T = T.getRight();
+	}
+	while (T != null) {
+	    if (i == T.getData()) {
+		if (T.getLeft() == null) {
+		    if (T.getRight() == null) {
+			if (T2.getData() < T.getData()) {
+			    T2.setRight(null);
+			} else {
+			    T2.setLeft(null);
+			}
+		    } else {
+			if (T2.getData() < T.getData()) {
+			    T2.setRight(T.getRight().getData());
+			}
+		    }
+		} else if (T.getRight() == null) {
+		    if (T2.getData() < T.getData()) {
+			T2.setLeft(T.getLeft().getData());
+		    }
+		} else {
+		    L = T.getLeft();
+		    while (T.getRight() != null) {
+			L = L.getRight();
+		    }
+		    T.setData(L.getData());
+		    remove(T.getLeft(), L.getData());
+		}
+	    } else if (i < T.getData()){
+		T2 = T;
+		T = T.getLeft();
+	    } else {
+		T2 = T;
+		T = T.getRight();
+	    }
+	}
+	
+    }
+
 }
